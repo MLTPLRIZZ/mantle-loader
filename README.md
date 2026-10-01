@@ -1,72 +1,41 @@
 # Mantle Loader
 
-A deployable Mantle menu loader for Vercel, Cloudflare Workers, and Railway.
+A deployable Mantle menu loader for Vercel, Cloudflare Workers, Railway, and Replit.
 
-## Deployment Options
+## Deploy now
 
-### Option 1: Vercel
+[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMLTPLRIZZ%2Fmantle-loader&project-name=mantle-loader&repo-name=mantle-loader)
 
-1. Connect your GitHub repo to Vercel
-2. Vercel auto-detects `vercel.json`
-3. Deploy with one click
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.app/new/github?repo=MLTPLRIZZ/mantle-loader)
+
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://dash.cloudflare.com/)
+
+[![Deploy to Replit](https://raw.githubusercontent.com/replit/replit/master/public/images/deploy-button.svg)](https://replit.com/github/MLTPLRIZZ/mantle-loader)
+
+## What it does
+
+This project loads a Mantle menu by trying several fallback URLs and rendering the response in the page.
+
+The frontend uses a loading spinner, then attempts to fetch from:
+
+- `https://api.allorigins.win/raw?url=https://mantle-menu.mantleunblocked.workers.dev`
+- `https://mantle-menu.mantleunblocked.workers.dev`
+- `https://mantle-menu.mantleunblocked.workers.dev/`
+
+If all fail, it shows an error state instead of hanging forever.
+
+## Project structure
+
+- `public/index.html` — main HTML page
+- `server.js` — Express server for Railway/Vercel
+- `worker.js` — Cloudflare Worker
+- `vercel.json` — Vercel config
+- `wrangler.toml` — Cloudflare config
+- `Procfile` — Railway config
+- `deploy.html` — deployment landing page
+
+## Local development
 
 ```bash
-npm install -g vercel
-vercel
-```
-
-### Option 2: Cloudflare Workers
-
-1. Install Wrangler:
-   ```bash
-   npm install -g wrangler
-   ```
-
-2. Authenticate:
-   ```bash
-   wrangler login
-   ```
-
-3. Deploy:
-   ```bash
-   wrangler deploy
-   ```
-
-### Option 3: Railway
-
-1. Connect your GitHub repo to Railway
-2. Railway auto-detects `Procfile`
-3. Deploy automatically
-
-Or deploy via CLI:
-```bash
-npm install -g @railway/cli
-railway link
-railway up
-```
-
-## Project Structure
-
-- `public/index.html` - Main HTML page (Vercel/Railway)
-- `server.js` - Express server (Vercel/Railway)
-- `worker.js` - Cloudflare Worker (Cloudflare)
-- `vercel.json` - Vercel config
-- `wrangler.toml` - Cloudflare config
-- `Procfile` - Railway config
-- `package.json` - Node dependencies
-
-## How It Works
-
-1. Page loads with a spinner
-2. Attempts to fetch from Mantle menu endpoints in order:
-   - `https://api.allorigins.win/raw?url=...` (CORS proxy)
-   - `https://mantle-menu.mantleunblocked.workers.dev` (direct)
-   - `https://mantle-menu.mantleunblocked.workers.dev/` (with trailing slash)
-3. Displays the fetched content
-4. Retry button allows manual refresh
-
-## Notes
-
-- All three platforms serve the same code
-- Fallback URLs ensure reliability when one endpoint is blocked
-- Uses Cloudflare's AllOrigins CORS proxy as first fallback
+npm install
+npm start
