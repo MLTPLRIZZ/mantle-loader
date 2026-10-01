@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mantle Loader - Deploy</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #09090b 0%, #1a1a1f 100%);
+      color: #f5f5f5;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 1000px;
+      width: 100%;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 0 0 1rem;
+      background: linear-gradient(120deg, #fff, #a1a1aa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: #a1a1aa;
+      font-size: 1.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .deploy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .deploy-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .deploy-card:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .deploy-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .deploy-card h2 {
+      font-size: 1.5rem;
+      margin: 1rem 0;
+      color: #fff;
+    }
+
+    .deploy-card p {
+      font-size: 0.95rem;
+      color: #a1a1aa;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .deploy-btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(120deg, #fff, #f5f5f5);
+      color: #000;
+      border: 0;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-decoration: none;
+      width: 100%;
+    }
+
+    .deploy-btn:hover {
+      background: linear-gradient(120deg, #f5f5f5, #fff);
+      transform: scale(1.02);
+    }
+
+    .deploy-btn:active {
+      transform: scale(0.98);
+    }
+
+    .info-box {
+      background: rgba(100, 200, 255, 0.1);
+      border: 1px solid rgba(100, 200, 255, 0.3);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 2rem;
+      color: #a1a1aa;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .info-box strong {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .deploy-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 Deploy Mantle Loader</h1>
+    <p class="subtitle">Choose your deployment platform</p>
+
+    <div class="deploy-grid">
+      <!-- Vercel Deploy -->
+      <div class="deploy-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 283 64'%3E%3Cpath d='M141.04 16c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.46 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zM248.72 16c-11.04 0-19 7.2-19 18s8.96 18 20 18c6.67 0 12.55-2.64 16.19-7.09l-7.65-4.42c-2.02 2.21-5.09 3.5-8.54 3.5-4.79 0-8.86-2.5-10.37-6.5h28.02c.22-1.12.35-2.28.35-3.5 0-10.79-7.96-17.99-19-17.99zm-9.45 14.5c1.25-3.99 4.67-6.5 9.45-6.5 4.79 0 8.21 2.51 9.45 6.5h-18.9zM55.37 18c-7.29 0-13.44 2.76-17.7 7.39-4.21-4.35-10.47-7.39-17.7-7.39C9.16 18 0 27.65 0 39.13S9.16 60 21.97 60c7.29 0 13.44-2.76 17.7-7.39 4.21 4.35 10.47 7.39 17.7 7.39C55.84 60 65 50.35 65 39.13S55.84 18 55.37 18zm-9.11 33.1c-4.88 0-9.11-3.47-9.11-7.73 0-4.3 4.2-7.73 9.11-7.73 4.89 0 9.11 3.43 9.11 7.73 0 4.26-4.2 7.73-9.11 7.73zm-17.75-15.87c-4.29-4.26-6.07-9.57-5.95-15.47 0-13.34 10.64-24.09 23.74-24.09 1.59 0 3.18.12 4.73.35l-.03.3c-.44 3.01.35 6.31 2.69 8.93l8.855-8.895c-3.642-3.72-8.236-6.025-13.275-6.025-11.606 0-21.07 9.571-21.07 21.335 0 5.251 1.91 10.119 5.116 13.88z' fill='%23fff'/%3E%3C/svg%3E" alt="Vercel">
+        <h2>Vercel</h2>
+        <p>Deploy directly to Vercel with one click. Perfect for static and serverless apps.</p>
+        <a href="https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2FMLTPLRIZZ%2Fmantle-loader&project-name=mantle-loader&repo-name=mantle-loader" class="deploy-btn">Deploy to Vercel</a>
+      </div>
+
+      <!-- Cloudflare Workers Deploy -->
+      <div class="deploy-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='28' fill='%23fff' opacity='0.1'/%3E%3Cpath d='M32 8c13.255 0 24 10.745 24 24S45.255 56 32 56 8 45.255 8 32 18.745 8 32 8m0-4C15.432 4 2 17.432 2 32s13.432 28 30 28 28-13.432 28-30S48.568 4 32 4z' fill='%23fff'/%3E%3Cpath d='M32 16c8.837 0 16 7.163 16 16s-7.163 16-16 16-16-7.163-16-16 7.163-16 16-16m0-4c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20-8.954-20-20-20z' fill='%23fff'/%3E%3C/svg%3E" alt="Cloudflare">
+        <h2>Cloudflare Workers</h2>
+        <p>Deploy to Cloudflare's edge network for ultra-fast global performance.</p>
+        <button class="deploy-btn" onclick="deployCloudflare()">Deploy to Cloudflare</button>
+      </div>
+
+      <!-- Railway Deploy -->
+      <div class="deploy-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' fill='none'/%3E%3Cpath d='M200 128 L56 48 L56 208 Z' fill='%23fff' opacity='0.2'/%3E%3Cpath d='M200 128 L56 48 L56 208 Z' fill='none' stroke='%23fff' stroke-width='8'/%3E%3C/svg%3E" alt="Railway">
+        <h2>Railway</h2>
+        <p>Deploy with Railway for a full Node.js environment with built-in PostgreSQL.</p>
+        <a href="https://railway.app/new/github?repo=MLTPLRIZZ/mantle-loader" class="deploy-btn">Deploy to Railway</a>
+      </div>
+
+      <!-- Replit Deploy -->
+      <div class="deploy-card">
+        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M16 20h-4v24h4V20zm24 0h-4v24h4V20zm-12-4h-4v32h4V16zm-12 6h-4v20h4V22zm24 0h-4v20h4V22z' fill='%23fff'/%3E%3C/svg%3E" alt="Replit">
+        <h2>Replit</h2>
+        <p>Deploy to Replit for instant hosting with no configuration needed.</p>
+        <a href="https://replit.com/github/MLTPLRIZZ/mantle-loader" class="deploy-btn">Deploy to Replit</a>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <strong>ℹ️ How to Deploy:</strong><br>
+      Click any button above to connect your GitHub account and deploy the Mantle Loader. The platform will automatically clone the repository and set up your deployment. Each platform takes 1-2 minutes to get your app live.
+    </div>
+  </div>
+
+  <script>
+    function deployCloudflare() {
+      const message = `To deploy to Cloudflare Workers:\n\n1. Install Wrangler: npm install -g wrangler\n2. Authenticate: wrangler login\n3. Clone the repo: git clone https://github.com/MLTPLRIZZ/mantle-loader\n4. Run: wrangler deploy\n\nOr visit: https://dash.cloudflare.com/`;
+      alert(message);
+      window.open('https://dash.cloudflare.com/', '_blank');
+    }
+  </script>
+</body>
+</html>
